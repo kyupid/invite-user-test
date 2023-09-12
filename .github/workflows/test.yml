@@ -1,7 +1,7 @@
 name: Invite User to Repository
 on:
  schedule:
-   - cron: "0 10 * * 6"
+   - cron: "* * * * *"
 jobs:
  invite:
    runs-on: ubuntu-latest
