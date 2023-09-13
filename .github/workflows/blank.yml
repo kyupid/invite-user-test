@@ -1,0 +1,18 @@
+name: Invite User to Repository
+on:
+ schedule:
+   - cron: "*/5 * * * *"
+jobs:
+ invite:
+   permissions: write-all
+   runs-on: ubuntu-latest
+   steps:
+     - name: Invite User
+       run: |
+         curl -L \
+           -X PUT \
+           -H "Accept: application/vnd.github+json" \
+           -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+           -H "X-GitHub-Api-Version: 2022-11-28" \
+           https://api.github.com/repos/kyupid/invite-user-test/collaborators/whataplabs \
+           -d '{"permission":"pull"}'
